@@ -20,18 +20,22 @@ public class ListaContactos {
 		 * que esté en la lista. Entonces solo añadimos una coordenada.
 		 */
 		while (aux!=null && !salir) {
-			if(aux.getFecha().compareTo(p.getFechaPosicion())==0) {
-				encontrado = true;
+			if(aux.getFecha() != null) {
+				if (aux.getFecha().compareTo(p.getFechaPosicion()) == 0) {
+					encontrado = true;
+					salir = true;
+					/**
+					 * Insertamos en la lista de coordenadas
+					 */
+					insertarEnLista(aux, p);
+				} else if (aux.getFecha().compareTo(p.getFechaPosicion()) < 0) {
+					ant = aux;
+					aux = aux.getSiguiente();
+				} else if (aux.getFecha().compareTo(p.getFechaPosicion()) > 0) {
+					salir = true;
+				}
+			}else{
 				salir = true;
-				/**
-				 * Insertamos en la lista de coordenadas
-				 */
-				insertarEnLista(aux,p);
-			}else if(aux.getFecha().compareTo(p.getFechaPosicion())<0) {
-				ant = aux;
-				aux=aux.getSiguiente();
-			}else if(aux.getFecha().compareTo(p.getFechaPosicion())>0) {
-				salir=true;
 			}
 		}
 		/**
@@ -137,8 +141,13 @@ public class ListaContactos {
 
 	public String getPrimerNodo() {
 		NodoTemporal aux = lista;
-		String cadena = aux.getFecha().getFecha().toString();
-		cadena+= ";" +  aux.getFecha().getHora().toString();
+
+		String cadena = "";
+		if(aux.getFecha() != null){
+			cadena = aux.getFecha().getFecha().toString();
+			cadena+= ";" +  aux.getFecha().getHora().toString();
+		}
+
 		return cadena;
 	}
 
@@ -199,13 +208,16 @@ public class ListaContactos {
 		int cont;
 		cont=0;
 		NodoTemporal aux = lista;
-		for(cont=1; cont<size; cont++) {
+		if(aux.getFecha() != null){
+			for(cont=1; cont<size; cont++) {
+				cadena += aux.getFecha().getFecha().toString();
+				cadena += ";" +  aux.getFecha().getHora().toString() + " ";
+				aux=aux.getSiguiente();
+			}
 			cadena += aux.getFecha().getFecha().toString();
-			cadena += ";" +  aux.getFecha().getHora().toString() + " ";
-			aux=aux.getSiguiente();
+			cadena += ";" +  aux.getFecha().getHora().toString();
 		}
-		cadena += aux.getFecha().getFecha().toString();
-		cadena += ";" +  aux.getFecha().getHora().toString();
+
 		return cadena;
 	}
 	
