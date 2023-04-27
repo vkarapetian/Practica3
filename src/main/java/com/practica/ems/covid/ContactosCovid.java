@@ -171,7 +171,9 @@ public class ContactosCovid {
 			throw new EmsPersonNotFoundException();
 		}
 	}
+	public void nada(){
 
+	}
 	public int findLocalizacion(String documento, String fecha, String hora) throws EmsLocalizationNotFoundException {
 
 		int pos;
