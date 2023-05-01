@@ -26,7 +26,7 @@ public class ListaContactos {
 					/**
 					 * Insertamos en la lista de coordenadas
 					 */
-					NodoPosicion npActual = aux.getListaCoordenadas();
+					/*NodoPosicion npActual = aux.getListaCoordenadas();
 					NodoPosicion npAnt = null;
 					boolean npEncontrado = false;
 					while (npActual != null && !npEncontrado) {
@@ -44,7 +44,8 @@ public class ListaContactos {
 							aux.setListaCoordenadas(npNuevo);
 						else
 							npAnt.setSiguiente(npNuevo);
-					}
+					}*/
+					insertarEnLista(aux,p);
 				} else if (aux.getFecha().compareTo(p.getFechaPosicion()) < 0) {
 					ant = aux;
 					aux = aux.getSiguiente();
@@ -57,8 +58,9 @@ public class ListaContactos {
 			 * metemos un nodo nuevo en la lista
 			 */
 			if (!encontrado) {
-				NodoTemporal nuevo = new NodoTemporal();
-				nuevo.setFecha(p.getFechaPosicion());
+				NodoTemporal nuevo = crearNodoTemporal(p);
+
+				/*nuevo.setFecha(p.getFechaPosicion());
 
 
 				NodoPosicion npActual = nuevo.getListaCoordenadas();
@@ -79,7 +81,7 @@ public class ListaContactos {
 						nuevo.setListaCoordenadas(npNuevo);
 					else
 						npAnt.setSiguiente(npNuevo);
-				}
+				}*/
 
 				if (ant != null) {
 					nuevo.setSiguiente(aux);
