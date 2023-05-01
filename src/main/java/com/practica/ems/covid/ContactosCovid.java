@@ -70,7 +70,8 @@ public class ContactosCovid {
 		String datas[] = dividirEntrada(data);
 		for (String linea : datas) {
 			String datos[] = this.dividirLineaData(linea);
-			if (!datos[0].equals("PERSONA") && !datos[0].equals("LOCALIZACION")) {
+			comprobarDatos(datos);
+			/*if (!datos[0].equals("PERSONA") && !datos[0].equals("LOCALIZACION")) {
 				throw new EmsInvalidTypeException();
 			}
 			if (datos[0].equals("PERSONA")) {
@@ -86,21 +87,21 @@ public class ContactosCovid {
 				PosicionPersona pp = this.crearPosicionPersona(datos);
 				this.localizacion.addLocalizacion(pp);
 				this.listaContactos.insertarNodoTemporal(pp);
-			}
+			}*/
 		}
 	}
 
 	public void loadDataFile(String fichero, boolean reset) {
-		File archivo = null;
-		FileReader fr = null;
-		BufferedReader br = null;
 		String datas[] = null, data = null;
-		loadDataFile(fichero, reset, archivo, fr, br, datas, data);
+		loadDataFile(fichero, reset, datas, data);
 		
 	}
 
 	@SuppressWarnings("resource")
-	public void loadDataFile(String fichero, boolean reset, File archivo, FileReader fr, BufferedReader br, String datas[], String data ) {
+	public void loadDataFile(String fichero, boolean reset, String datas[], String data ) {
+		File archivo = null;
+		FileReader fr = null;
+		BufferedReader br = null;
 		try {
 			// Apertura del fichero y creacion de BufferedReader para poder
 			// hacer una lectura comoda (disponer del metodo readLine()).
@@ -141,24 +142,6 @@ public class ContactosCovid {
 			for (String linea : datas) {
 				String datos[] = this.dividirLineaData(linea);
 				comprobarDatos(datos);
-				/*if (!datos[0].equals("PERSONA") && !datos[0].equals("LOCALIZACION")) {
-					throw new EmsInvalidTypeException();
-				}
-				if (datos[0].equals("PERSONA")) {
-					if (datos.length != Constantes.MAX_DATOS_PERSONA) {
-						throw new EmsInvalidNumberOfDataException("El número de datos para PERSONA es menor de 8");
-					}
-					this.poblacion.addPersona(this.crearPersona(datos));
-				}
-				if (datos[0].equals("LOCALIZACION")) {
-					if (datos.length != Constantes.MAX_DATOS_LOCALIZACION) {
-						throw new EmsInvalidNumberOfDataException(
-								"El número de datos para LOCALIZACION es menor de 6" );
-					}
-					PosicionPersona pp = this.crearPosicionPersona(datos);
-					this.localizacion.addLocalizacion(pp);
-					this.listaContactos.insertarNodoTemporal(pp);
-				}*/
 			}
 
 		}
@@ -193,9 +176,7 @@ public class ContactosCovid {
 			throw new EmsPersonNotFoundException();
 		}
 	}
-	public void nada(){
 
-	}
 	public int findLocalizacion(String documento, String fecha, String hora) throws EmsLocalizationNotFoundException {
 
 		int pos;
@@ -275,30 +256,7 @@ public class ContactosCovid {
 			}
 			if (i == 7){
 				persona.setFechaNacimiento(parsearFecha(s));
-			}/*
-			switch (i) {
-			case 1:
-				persona.setDocumento(s);
-				break;
-			case 2:
-				persona.setNombre(s);
-				break;
-			case 3:
-				persona.setApellidos(s);
-				break;
-			case 4:
-				persona.setEmail(s);
-				break;
-			case 5:
-				persona.setDireccion(s);
-				break;
-			case 6:
-				persona.setCp(s);
-				break;
-			case 7:
-				persona.setFechaNacimiento(parsearFecha(s));
-				break;
-			}*/
+			}
 		}
 		return persona;
 	}
