@@ -153,7 +153,7 @@ public class ListaContactos {
 		return false;
 	}
 	
-	private void insertarPersona (String documento, NodoPersonas nodo) {
+	/*private void insertarPersona (String documento, NodoPersonas nodo) {
 		NodoPersonas aux = nodo, nuevo = new NodoPersonas(documento, null);
 		while(aux.getSiguiente()!=null) {				
 			aux = aux.getSiguiente();				
@@ -173,7 +173,7 @@ public class ListaContactos {
 			}
 			return cont;
 		}
-	}
+	}*/
 	
 	public int tamanioLista () {
 		return this.size;
