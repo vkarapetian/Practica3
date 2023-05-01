@@ -74,32 +74,32 @@ public class Test_3 {
 	@DisplayName("Comprobamos el numero de personas entre dos instantes temporales")
 	@Test
 	void test_8 () throws EmsInvalidTypeException, EmsInvalidNumberOfDataException, EmsDuplicatePersonException, EmsDuplicateLocationException {
-		FechaHora ini = new FechaHora(25,5,2021,16,30);
-		FechaHora fin = new FechaHora(25,5,2021,16,30);
+		FechaHora ini = new FechaHora(25,5,2021,new FechaHora.Hora(16,30));
+		FechaHora fin = new FechaHora(25,5,2021,new FechaHora.Hora(16,30));
 		assertEquals(contactosCovid.getListaContactos().numPersonasEntreDosInstantes(ini,fin), 4);		
 	}
 	
 	@DisplayName("Comprobamos el numero de personas entre dos instantes temporales")
 	@Test
 	void test_9 () throws EmsInvalidTypeException, EmsInvalidNumberOfDataException, EmsDuplicatePersonException, EmsDuplicateLocationException {
-		FechaHora ini = new FechaHora(25,5,2021,16,36);
-		FechaHora fin = new FechaHora(25,5,2021,16,36);
+		FechaHora ini = new FechaHora(25,5,2021,new FechaHora.Hora(16,36));
+		FechaHora fin = new FechaHora(25,5,2021,new FechaHora.Hora(16,36));
 		assertEquals(contactosCovid.getListaContactos().numPersonasEntreDosInstantes(ini,fin), 4);		
 	}
 	
 	@DisplayName("Comprobamos el numero de nodos coordenada entre dos instantes temporales")
 	@Test
 	void test_10 () throws EmsInvalidTypeException, EmsInvalidNumberOfDataException, EmsDuplicatePersonException, EmsDuplicateLocationException {
-		FechaHora ini = new FechaHora(25,5,2021,16,36);
-		FechaHora fin = new FechaHora(25,5,2021,16,36);
+		FechaHora ini = new FechaHora(25,5,2021,new FechaHora.Hora(16,36));
+		FechaHora fin = new FechaHora(25,5,2021,new FechaHora.Hora(16,36));
 		assertEquals(contactosCovid.getListaContactos().numNodosCoordenadaEntreDosInstantes(ini,fin), 3);		
 	}
 	
 	@DisplayName("Comprobamos el numero de nodos coordenada y el número de personas entre dos instantes temporales")
 	@Test
 	void test_11 () throws EmsInvalidTypeException, EmsInvalidNumberOfDataException, EmsDuplicatePersonException, EmsDuplicateLocationException {
-		FechaHora ini = new FechaHora(25,5,2021,16,30);
-		FechaHora fin = new FechaHora(25,5,2021,18,01);
+		FechaHora ini = new FechaHora(25,5,2021,new FechaHora.Hora(16,30));
+		FechaHora fin = new FechaHora(25,5,2021,new FechaHora.Hora(18,01));
 		assertEquals(contactosCovid.getListaContactos().numNodosCoordenadaEntreDosInstantes(ini,fin), 10);	
 		assertEquals(contactosCovid.getListaContactos().numPersonasEntreDosInstantes(ini,fin), 16);
 	}
@@ -107,8 +107,8 @@ public class Test_3 {
 	@DisplayName("Aniadimos un nuevo nodo coordenadas en una nodo temporal que existe")
 	@Test
 	void test_12 () throws EmsInvalidTypeException, EmsInvalidNumberOfDataException, EmsDuplicatePersonException, EmsDuplicateLocationException {
-		FechaHora ini = new FechaHora(25,5,2021,16,36);
-		FechaHora fin = new FechaHora(25,5,2021,16,36);
+		FechaHora ini = new FechaHora(25,5,2021,new FechaHora.Hora(16,36));
+		FechaHora fin = new FechaHora(25,5,2021,new FechaHora.Hora(16,36));
 		assertEquals(contactosCovid.getListaContactos().numNodosCoordenadaEntreDosInstantes(ini,fin), 3);
 		contactosCovid.loadData("LOCALIZACION;99998888X;25/05/2021;16:36;54.2256;32.1234", false);
 		assertEquals(contactosCovid.getListaContactos().numNodosCoordenadaEntreDosInstantes(ini,fin), 4);		

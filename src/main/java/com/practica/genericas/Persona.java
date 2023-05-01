@@ -2,16 +2,20 @@ package com.practica.genericas;
 
 
 public class Persona {
-	private String nombre, apellidos, documento, email, direccion, cp;
+
+
+
+	private String nombre,apellidos,documento,direccion,email, cp;
 	FechaHora fechaNacimiento;
 
 	public Persona() {
 
 	}
 
-	public Persona(String nombre, String apellidos, String documento, String email, String direccion,
+	public Persona(String nombre,String apellidos,String documento,String email, String direccion,
 			FechaHora fechaNacimiento) {
 		super();
+
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.documento = documento;

@@ -255,6 +255,27 @@ public class ContactosCovid {
 		Persona persona = new Persona();
 		for (int i = 1; i < Constantes.MAX_DATOS_PERSONA; i++) {
 			String s = data[i];
+			if (i == 1){
+				persona.setDocumento(s);
+			}
+			if (i == 2){
+				persona.setNombre(s);
+			}
+			if (i == 3){
+				persona.setApellidos(s);
+			}
+			if (i == 4){
+				persona.setEmail(s);
+			}
+			if (i == 5){
+				persona.setDireccion(s);
+			}
+			if (i == 6){
+				persona.setCp(s);
+			}
+			if (i == 7){
+				persona.setFechaNacimiento(parsearFecha(s));
+			}/*
 			switch (i) {
 			case 1:
 				persona.setDocumento(s);
@@ -277,7 +298,7 @@ public class ContactosCovid {
 			case 7:
 				persona.setFechaNacimiento(parsearFecha(s));
 				break;
-			}
+			}*/
 		}
 		return persona;
 	}
@@ -317,7 +338,7 @@ public class ContactosCovid {
 		dia = Integer.parseInt(valores[0]);
 		mes = Integer.parseInt(valores[1]);
 		anio = Integer.parseInt(valores[2]);
-		FechaHora fechaHora = new FechaHora(dia, mes, anio, 0, 0);
+		FechaHora fechaHora = new FechaHora(dia, mes, anio,null);
 		return fechaHora;
 	}
 	
@@ -331,7 +352,8 @@ public class ContactosCovid {
 		valores = hora.split("\\:");
 		minuto = Integer.parseInt(valores[0]);
 		segundo = Integer.parseInt(valores[1]);
-		FechaHora fechaHora = new FechaHora(dia, mes, anio, minuto, segundo);
+		FechaHora.Hora nuevaHora = new FechaHora.Hora(minuto,segundo);
+		FechaHora fechaHora = new FechaHora(dia, mes, anio, nuevaHora);
 		return fechaHora;
 	}
 }

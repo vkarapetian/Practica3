@@ -47,7 +47,7 @@ public class FechaHora implements Comparable<FechaHora>{
 
 	}
 
-	public class Hora {
+	public static class Hora {
 		private int hora, minuto;
 
 		public Hora(int hora, int minuto) {
@@ -89,9 +89,9 @@ public class FechaHora implements Comparable<FechaHora>{
 		this.hora = hora;
 	}
 
-	public FechaHora(int dia, int mes, int anio, int hora, int minuto) {
+	public FechaHora(int dia, int mes, int anio, Hora hora) {
 		this.fecha = new Fecha(dia, mes, anio);
-		this.hora = new Hora(hora, minuto);
+		this.hora = hora;
 	}
 
 	public Fecha getFecha() {
