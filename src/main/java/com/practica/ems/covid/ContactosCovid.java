@@ -301,17 +301,14 @@ public class ContactosCovid {
 	}
 	
 	private FechaHora parsearFecha (String fecha, String hora) {
-		int dia, mes, anio;
-		String[] valores = fecha.split("\\/");
-		dia = Integer.parseInt(valores[0]);
-		mes = Integer.parseInt(valores[1]);
-		anio = Integer.parseInt(valores[2]);
+
+		FechaHora fechaHora = parsearFecha(fecha);
 		int minuto, segundo;
-		valores = hora.split("\\:");
+		String[] valores = hora.split("\\:");
 		minuto = Integer.parseInt(valores[0]);
 		segundo = Integer.parseInt(valores[1]);
 		FechaHora.Hora nuevaHora = new FechaHora.Hora(minuto,segundo);
-		FechaHora fechaHora = new FechaHora(dia, mes, anio, nuevaHora);
+		fechaHora.setHora(nuevaHora);
 		return fechaHora;
 	}
 }
